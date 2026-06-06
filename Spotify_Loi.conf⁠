@@ -1,0 +1,14 @@
+# Cấu hình Spotify Premium công khai bởi Lợi Đẹp Trai
+[General]
+
+[Rule]
+# Cho toàn bộ lưu lượng chạy trực tiếp để không tốn pin, chậm mạng
+FINAL,DIRECT
+
+[Script]
+# Sử dụng trực tiếp link GitHub Script của bạn
+Spotify_Premium = type=http-response,script-path=https://raw.githubusercontent.com/nguyenvanloi1212a-wq/Loideptraispotify/refs/heads/main/Spotify_Loi.js,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(ad-logic\/v1\/adslot|config\/v1\/bootstrap),max-size=524288,requires-body=true,timeout=60,enable=true
+
+[MITM]
+enable = true
+hostname = spclient.wg.spotify.com
