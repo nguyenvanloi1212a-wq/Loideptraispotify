@@ -1,15 +1,24 @@
-# Cấu hình Spotify Premium công khai bởi Lợi Đẹp Trai
+# Shadowrocket: Spotify Premium Pro Độc Lập bởi Lợi Đẹp Trai
 [General]
+# Đường link cập nhật cấu hình tự động từ chính kho của bạn
+update-url = https://raw.githubusercontent.com/nguyenvanloi1212a-wq/Loideptraispotify/refs/heads/main/Spotify_Loi.conf
 
 [Rule]
-# Cho toàn bộ lưu lượng chạy trực tiếp để không tốn pin, chậm mạng
+# Toàn bộ lưu lượng chạy trực tiếp để tối ưu tốc độ và không tốn pin
 FINAL,DIRECT
 
+[Header Rewrite]
+# Sửa lỗi bộ nhớ đệm (Cache) để đảm bảo script hoạt động ổn định
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+
 [Script]
-# Sử dụng trực tiếp link GitHub Script sạch của bạn
-Spotify_Premium = type=http-response,script-path=https://raw.githubusercontent.com/nguyenvanloi1212a-wq/Loideptraispotify/refs/heads/main/Spotify_Loi.js,pattern=^https://spclient.wg.spotify.com/(ad-logic\/v1\/adslot|config\/v1\/bootstrap),max-size=524288,requires-body=true,timeout=60,enable=true
+# 1. Bản Cao Cấp Core Pro: Mở khóa tính năng Premium và diệt quảng cáo gốc
+Spotify_Core = type=http-response,script-path=https://raw.githubusercontent.com/nguyenvanloi1212a-wq/Loideptraispotify/refs/heads/main/Spotify_Core_Pro.js,pattern=^https://spclient.wg.spotify.com/(ad-logic\/v1\/adslot|config\/v1\/bootstrap|user-customization-service\/v1\/customize),max-size=524288,requires-body=true,timeout=60,enable=true
+
+# 2. Bản Cao Cấp UI Pro: Bẻ khóa giao diện chọn bài tự do, xóa banner mời mua Premium
+Spotify_UI = type=http-response,script-path=https://raw.githubusercontent.com/nguyenvanloi1212a-wq/Loideptraispotify/refs/heads/main/Spotify_UI_Pro.js,pattern=^https://(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com)\/(artistview\/v1\/artist|album-entity-view\/v2\/album|playlist),max-size=1048576,requires-body=true,timeout=60,enable=true
 
 [MITM]
 enable = true
-# Tên miền chính xác của Spotify để giải mã mạng
-hostname = spclient.wg.spotify.com
+# Giải mã chính xác các máy chủ dữ liệu của Spotify
+hostname = spclient.wg.spotify.com, *-spclient.spotify.com
