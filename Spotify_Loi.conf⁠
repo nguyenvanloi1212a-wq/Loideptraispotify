@@ -1,7 +1,7 @@
 # Shadowrocket: Spotify Premium Độc Quyền bởi Lợi Đẹp Trai
 [General]
 # Đường link cập nhật cấu hình tự động từ chính kho của bạn
-update-url = https://raw.githubusercontent.com/nguyenvanloi1212a-wq/Loideptraispotify/refs/heads/main/Spotify_Loi.conf%E2%81%A0
+update-url = https://raw.githubusercontent.com/nguyenvanloi1212a-wq/Loideptraispotify/refs/heads/main/Spotify_Loi.conf
 
 [Rule]
 # Toàn bộ lưu lượng chạy trực tiếp để tối ưu tốc độ và tiết kiệm pin
